@@ -13,7 +13,7 @@ spring:
       ddl-auto: update
     show-sql: true
   datasource:
-    url: jdbc:postgresql://host.docker.internal:5435/ticketing-app
+    url: jdbc:postgresql://localhost:5433/ticketing-app
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
