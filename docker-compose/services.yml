@@ -1,12 +1,5 @@
 version: '2.1'
 services:
-  discovery-service:
-    image: ${GROUP_ID}/discovery-service:${SERVICE_VERSION:-latest}
-    mem_limit: 700m
-    ports:
-      - "8761:8761"
-    networks:
-      - backend
   database:
     restart: "no"
     image: postgres:latest
@@ -35,8 +28,6 @@ services:
     depends_on:
       database:
         condition: service_healthy
-      discovery-service:
-        condition: service_started
     ports:
       - "9090:9090"
     networks:
@@ -49,8 +40,6 @@ services:
     depends_on:
       database:
         condition: service_healthy
-      discovery-service:
-        condition: service_started
     ports:
       - "9091:9091"
     networks:
@@ -63,10 +52,14 @@ services:
     depends_on:
       database:
         condition: service_healthy
-      discovery-service:
-        condition: service_started
     ports:
       - "9092:9092"
+    networks:
+      - backend
+  discovery-service:
+    image: ${GROUP_ID}/discovery-service:${SERVICE_VERSION:-latest}
+    ports:
+      - "8761:8761"
     networks:
       - backend
 networks:

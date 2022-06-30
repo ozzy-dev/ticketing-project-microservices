@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ticketing-project-rest
+    name: project-service
   profiles:
     active: default
     #    initialization-mode: always
@@ -22,11 +22,8 @@ server:
 
 eureka:
   client:
-    service-url:
-      defaultZone: http://discovery-service-1:8761/eureka/
-    fetch-registry: true
-    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://discovery-service:8761/eureka/
   instance:
     prefer-ip-address: true
-
 
