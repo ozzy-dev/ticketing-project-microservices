@@ -17,5 +17,16 @@ spring:
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
+
 server:
   port: 9092
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-service-1:8761/eureka/
+    fetch-registry: true
+    registerWithEureka: true
+  instance:
+    prefer-ip-address: true
+

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ticketing-project-microservice
+    name: user-service
   profiles:
     active: default
 #    initialization-mode: always
@@ -19,4 +19,13 @@ spring:
     driver-class-name: org.postgresql.Driver
 server:
   port: 9090
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-service-1:8761/eureka/
+    fetch-registry: true
+    registerWithEureka: true
+  instance:
+    prefer-ip-address: true
 
