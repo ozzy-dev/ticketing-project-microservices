@@ -25,6 +25,7 @@ eureka:
     serviceUrl:
       defaultZone: http://discovery-service:8761/eureka/
 
+
 management:
   info:
     env:
