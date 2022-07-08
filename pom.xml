@@ -13,6 +13,7 @@
         <module>app-client-management</module>
         <module>app-config-data</module>
         <module>discovery-server</module>
+        <module>gateway-server</module>
     </modules>
 
     <parent>
@@ -104,6 +105,11 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+                <version>${spring-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-gateway</artifactId>
                 <version>${spring-cloud.version}</version>
             </dependency>
 
