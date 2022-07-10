@@ -80,6 +80,11 @@ services:
       - "8762:8762"
     networks:
       - backend
+    depends_on:
+      - discovery-service
+      - userservice
+      - projectservice
+      - taskservice
 networks:
   backend:
     driver: bridge
