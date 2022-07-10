@@ -3,7 +3,7 @@ spring:
     name: user-service
   profiles:
     active: default
-#    initialization-mode: always
+    #    initialization-mode: always
     data: classpath:init01.sql
   jpa:
     properties:
@@ -22,7 +22,7 @@ server:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: discovery-service
   client:
     serviceUrl:
       defaultZone: http://discovery-service:8761/eureka/
