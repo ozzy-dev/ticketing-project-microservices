@@ -2,6 +2,8 @@ spring:
   application:
     name: gateway-server
   cloud:
+    loadbalancer:
+      enabled: false
     gateway:
       discovery:
         locator:
@@ -30,7 +32,7 @@ server:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: discovery-service
   client:
     serviceUrl:
       defaultZone: http://discovery-service:8761/eureka/
