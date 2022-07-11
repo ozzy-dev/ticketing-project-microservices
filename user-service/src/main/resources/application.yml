@@ -21,8 +21,6 @@ server:
   port: 9090
 
 eureka:
-  instance:
-    hostname: discovery-service
   client:
     serviceUrl:
       defaultZone: http://discovery-service:8761/eureka/
