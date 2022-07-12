@@ -9,6 +9,18 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+#      routes:
+#        - id: user-service
+#          uri: lb://user-service
+#          predicates:
+#            - Path=/cydeo/dev/user/**
+#          filters:
+#            - RewritePath=/cydeo/dev/user/(?<segment>.*)","/${segment}"
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: INFO
+    org.springframework.cloud.gateway: TRACE
 
 
 
@@ -38,3 +50,5 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://discovery-service:8761/eureka/
+
+
