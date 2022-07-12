@@ -12,6 +12,7 @@ import com.cydeo.service.ProjectService;
 import com.cydeo.service.UserClientService;
 import com.cydeo.util.MapperUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -105,9 +106,9 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<ProjectDTO> listAllProjectDetails(String userName) throws ProjectServiceException {
+    public List<ProjectDTO> listAllProjectDetails(@RequestHeader("ticketingapp-correlation-id") String correlationId,String userName) throws ProjectServiceException {
 
-        UserDTO user = userClientService.getUserDTOByUserName(userName);
+        UserDTO user = userClientService.getUserDTOByUserName(userName,correlationId);
 
         if(user != null){
             List<Project> list = projectRepository.findAllByAssignedManagerId(user.getId());

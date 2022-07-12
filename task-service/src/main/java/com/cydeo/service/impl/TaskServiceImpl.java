@@ -12,6 +12,7 @@ import com.cydeo.service.TaskService;
 import com.cydeo.service.UserClientService;
 import com.cydeo.util.MapperUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -110,9 +111,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<TaskDTO> listAllTasksByStatusIsNot(Status status) {
+    public List<TaskDTO> listAllTasksByStatusIsNot(Status status,@RequestHeader("ticketingapp-correlation-id") String correlationId) {
 
-        User loggedInUser = mapperUtil.convert(userClientService.getUserDTOByUserName("john@employee.com"),new User());
+        User loggedInUser = mapperUtil.convert(userClientService.getUserDTOByUserName("john@employee.com",correlationId),new User());
 
         List<Task> list = taskRepository.findAllByTaskStatusIsNotAndAssignedEmployee(status, loggedInUser);
         return list.stream().map(obj -> mapperUtil.convert(obj,new TaskDTO())).collect(Collectors.toList());
@@ -131,9 +132,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<TaskDTO> listAllTasksByStatus(Status status) {
+    public List<TaskDTO> listAllTasksByStatus(Status status,@RequestHeader("ticketingapp-correlation-id") String correlationId) {
 
-        User loggedInUser = mapperUtil.convert(userClientService.getUserDTOByUserName("john@employee.com"),new User());
+        User loggedInUser = mapperUtil.convert(userClientService.getUserDTOByUserName("john@employee.com",correlationId),new User());
         List<Task> list = taskRepository.findAllByTaskStatusAndAssignedEmployee(status, loggedInUser);
         return list.stream().map(obj -> mapperUtil.convert(obj,new TaskDTO())).collect(Collectors.toList());
     }

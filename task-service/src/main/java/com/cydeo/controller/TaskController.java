@@ -52,8 +52,8 @@ public class TaskController {
     }
 
     @GetMapping("/employee/pending-tasks")
-    public ResponseEntity<ResponseWrapper> employeePendingTasks(){
-        List<TaskDTO> taskDTOList = taskService.listAllTasksByStatusIsNot(Status.COMPLETE);
+    public ResponseEntity<ResponseWrapper> employeePendingTasks(@RequestHeader("ticketingapp-correlation-id") String correlationId){
+        List<TaskDTO> taskDTOList = taskService.listAllTasksByStatusIsNot(Status.COMPLETE,correlationId);
         return ResponseEntity.ok(new ResponseWrapper("Task are successfully retrieved",taskDTOList, HttpStatus.OK));
 
     }
@@ -65,8 +65,8 @@ public class TaskController {
     }
 
     @GetMapping("/employee/archive")
-    public ResponseEntity<ResponseWrapper> employeeArchivedTasks(){
-        List<TaskDTO> taskDTOS = taskService.listAllTasksByStatus(Status.COMPLETE);
+    public ResponseEntity<ResponseWrapper> employeeArchivedTasks(@RequestHeader("ticketingapp-correlation-id") String correlationId){
+        List<TaskDTO> taskDTOS = taskService.listAllTasksByStatus(Status.COMPLETE,correlationId);
         return ResponseEntity.ok(new ResponseWrapper("Tasks are successfully retrieved",taskDTOS,HttpStatus.OK));
     }
 

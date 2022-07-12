@@ -3,6 +3,7 @@ package com.cydeo.service;
 import com.cydeo.dto.ProjectDTO;
 import com.cydeo.entity.User;
 import com.cydeo.exception.ProjectServiceException;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public interface ProjectService {
 
     ProjectDTO complete(String projectCode) throws ProjectServiceException;
 
-    List<ProjectDTO> listAllProjectDetails(String userName) throws ProjectServiceException;
+    List<ProjectDTO> listAllProjectDetails(@RequestHeader("ticketingapp-correlation-id") String correlationId, String userName) throws ProjectServiceException;
 
     List<ProjectDTO> readAllByAssignedManager(User user);
 

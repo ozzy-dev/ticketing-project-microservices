@@ -52,9 +52,9 @@ public class ProjectController {
     }
 
     @GetMapping("/details/{userName}")
-    public ResponseEntity<ResponseWrapper> readAllProjectDetails(@PathVariable("userName") String userName) throws ProjectServiceException {
+    public ResponseEntity<ResponseWrapper> readAllProjectDetails(@PathVariable("userName") String userName,@RequestHeader("ticketingapp-correlation-id") String correlationId) throws ProjectServiceException {
 
-            List<ProjectDTO> projectDTOs = projectService.listAllProjectDetails(userName);
+            List<ProjectDTO> projectDTOs = projectService.listAllProjectDetails(userName,correlationId);
             return ResponseEntity.ok(new ResponseWrapper("Projects are retrieved with details",projectDTOs,HttpStatus.OK));
 
     }
