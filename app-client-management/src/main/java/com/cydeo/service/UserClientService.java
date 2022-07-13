@@ -10,5 +10,5 @@ import org.springframework.web.bind.annotation.RequestHeader;
 public interface UserClientService {
 
     @GetMapping("/api/v1/user/{username}")
-    UserDTO getUserDTOByUserName(@PathVariable("username") String username, @RequestHeader("ticketingapp-correlation-id") String correlationId);
+    UserDTO getUserDTOByUserName(@PathVariable("username") String username);
 }

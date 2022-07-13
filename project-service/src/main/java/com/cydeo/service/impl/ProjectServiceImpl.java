@@ -106,9 +106,9 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<ProjectDTO> listAllProjectDetails(@RequestHeader("ticketingapp-correlation-id") String correlationId,String userName) throws ProjectServiceException {
+    public List<ProjectDTO> listAllProjectDetails(String userName) throws ProjectServiceException {
 
-        UserDTO user = userClientService.getUserDTOByUserName(userName,correlationId);
+        UserDTO user = userClientService.getUserDTOByUserName(userName);
 
         if(user != null){
             List<Project> list = projectRepository.findAllByAssignedManagerId(user.getId());

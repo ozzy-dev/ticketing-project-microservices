@@ -22,21 +22,12 @@ server:
 
 
 eureka:
+  instance:
+    status-page-url-path: ${management.context-path}/info
+    health-check-url-path: ${management.context-path}/health
   client:
     serviceUrl:
       defaultZone: http://discovery-service:8761/eureka/
-
-
-
-#management:
-#  info:
-#    env:
-#      enabled: true
-#
-#  endpoints:
-#    web:
-#      exposure:
-#        include: info
 
 management:
   endpoint:
@@ -46,6 +37,7 @@ management:
     web:
       exposure:
         include: "*"
+  context-path: http://localhost:${server.port}/actuator
 
 info:
   application:

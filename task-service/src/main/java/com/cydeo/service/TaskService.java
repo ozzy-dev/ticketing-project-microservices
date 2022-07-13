@@ -22,11 +22,11 @@ public interface TaskService {
 
     void completeByProject(ProjectDTO project);
 
-    List<TaskDTO> listAllTasksByStatusIsNot(Status status,@RequestHeader("ticketingapp-correlation-id") String correlationId);
+    List<TaskDTO> listAllTasksByStatusIsNot(Status status);
 
     void updateStatus(TaskDTO task);
 
-    List<TaskDTO> listAllTasksByStatus(Status status,@RequestHeader("ticketingapp-correlation-id") String correlationId);
+    List<TaskDTO> listAllTasksByStatus(Status status);
 
     List<TaskDTO> readAllByAssignedEmployee(User assignedEmployee);
 

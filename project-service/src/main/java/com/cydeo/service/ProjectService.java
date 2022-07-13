@@ -21,7 +21,7 @@ public interface ProjectService {
 
     ProjectDTO complete(String projectCode) throws ProjectServiceException;
 
-    List<ProjectDTO> listAllProjectDetails(@RequestHeader("ticketingapp-correlation-id") String correlationId, String userName) throws ProjectServiceException;
+    List<ProjectDTO> listAllProjectDetails(String userName) throws ProjectServiceException;
 
     List<ProjectDTO> readAllByAssignedManager(User user);
 

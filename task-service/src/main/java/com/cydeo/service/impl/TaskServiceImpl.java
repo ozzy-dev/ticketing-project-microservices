@@ -111,9 +111,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<TaskDTO> listAllTasksByStatusIsNot(Status status,@RequestHeader("ticketingapp-correlation-id") String correlationId) {
+    public List<TaskDTO> listAllTasksByStatusIsNot(Status status) {
 
-        User loggedInUser = mapperUtil.convert(userClientService.getUserDTOByUserName("john@employee.com",correlationId),new User());
+        User loggedInUser = mapperUtil.convert(userClientService.getUserDTOByUserName("john@employee.com"),new User());
 
         List<Task> list = taskRepository.findAllByTaskStatusIsNotAndAssignedEmployee(status, loggedInUser);
         return list.stream().map(obj -> mapperUtil.convert(obj,new TaskDTO())).collect(Collectors.toList());
@@ -132,9 +132,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<TaskDTO> listAllTasksByStatus(Status status,@RequestHeader("ticketingapp-correlation-id") String correlationId) {
+    public List<TaskDTO> listAllTasksByStatus(Status status) {
 
-        User loggedInUser = mapperUtil.convert(userClientService.getUserDTOByUserName("john@employee.com",correlationId),new User());
+        User loggedInUser = mapperUtil.convert(userClientService.getUserDTOByUserName("john@employee.com"),new User());
         List<Task> list = taskRepository.findAllByTaskStatusAndAssignedEmployee(status, loggedInUser);
         return list.stream().map(obj -> mapperUtil.convert(obj,new TaskDTO())).collect(Collectors.toList());
     }
