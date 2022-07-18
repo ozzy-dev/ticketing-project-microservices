@@ -2,6 +2,7 @@ package com.cydeo.service.impl;
 
 import com.cydeo.dto.ProjectDTO;
 import com.cydeo.dto.UserDTO;
+import com.cydeo.dto.UserResponseDTO;
 import com.cydeo.entity.Project;
 import com.cydeo.entity.User;
 import com.cydeo.enums.Status;
@@ -107,7 +108,8 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<ProjectDTO> listAllProjectDetails(String userName) throws ProjectServiceException {
 
-        UserDTO user = userClientService.getUserDTOByUserName(userName);
+        UserResponseDTO userResponseDto = userClientService.getUserDTOByUserName(userName);
+        UserDTO user = userResponseDto.getData();
 
         if(user != null){
             List<Project> list = projectRepository.findAllByAssignedManagerId(user.getId());
