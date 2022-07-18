@@ -37,6 +37,9 @@ management:
       exposure:
         include: "*"
   context-path: http://localhost:${server.port}/actuator
+  health:
+    circuitbreakers:
+      enabled: true
 
 info:
   application:
@@ -46,3 +49,29 @@ info:
     spring-cloud-version: '@spring-cloud.version@'
     spring-boot-version: '@project.parent.version@'
 
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 2
+        permittedNumberOfCallsInHalfOpenState: 1
+        slidingWindowSize: 2
+        waitDurationInOpenState: 10000
+        slidingWindowType: TIME_BASED
+    instances:
+      user-service:
+        baseConfig: default
+        waitDurationInOpenState: 15000
+      task-service:
+        baseConfig: default
+        waitDurationInOpenState: 20000
+  retry:
+    configs:
+      default:
+        maxAttempts: 3
+        waitDuration: 200
+    instances:
+      user-service:
+        baseConfig: default
