@@ -120,7 +120,7 @@ public class ProjectServiceImpl implements ProjectService {
     public List<ProjectDTO> listAllProjectDetails(String userName) throws ProjectServiceException {
 
         UserResponseDTO userResponseDto = userClientService.getUserDTOByUserName(userName);
-        UserDTO user = userResponseDto.getUser();
+        UserDTO user = userResponseDto.getData();
 
         if(user != null){
             List<Project> list = projectRepository.findAllByAssignedManagerId(user.getId());

@@ -7,5 +7,5 @@ public class UserResponseDTO {
     public boolean success;
     public String message;
     public int code;
-    public UserDTO user;
+    public UserDTO data;
 }
