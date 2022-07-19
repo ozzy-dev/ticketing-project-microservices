@@ -4,6 +4,7 @@ import com.cydeo.dto.ProjectDTO;
 import com.cydeo.entity.ResponseWrapper;
 import com.cydeo.exception.ProjectServiceException;
 import com.cydeo.service.ProjectService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -64,5 +65,15 @@ public class ProjectController {
         projectService.complete(code);
         return ResponseEntity.ok(new ResponseWrapper("Project is successfully completed",HttpStatus.OK));
 
+    }
+
+    @GetMapping("/test")
+    @RateLimiter(name="test",fallbackMethod = "testingRateLimiter")
+    public String test(){
+        return "Hello, this is a test for Rate Limiter";
+    }
+
+    private String testingRateLimiter(Exception e){
+        return "This is fall back method for rate limiter test";
     }
 }
