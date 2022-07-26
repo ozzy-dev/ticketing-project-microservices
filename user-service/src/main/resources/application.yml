@@ -23,7 +23,7 @@ spring:
   zipkin:
     base-url: http://host.docker.internal:9411/
 server:
-  port: 9090
+  port: 9093
 
 
 eureka:
@@ -33,6 +33,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://discovery-service:8761/eureka/
+
 
 management:
   endpoint:
