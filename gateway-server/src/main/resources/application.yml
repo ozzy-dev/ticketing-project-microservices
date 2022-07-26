@@ -16,6 +16,11 @@ spring:
 #            - Path=/cydeo/dev/user/**
 #          filters:
 #            - RewritePath=/cydeo/dev/user/(?<segment>.*)","/${segment}"
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    base-url: http://host.docker.internal:9411/
 logging:
   level:
     root: INFO

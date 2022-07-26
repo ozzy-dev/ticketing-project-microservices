@@ -119,6 +119,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Retry(name = "user-service", fallbackMethod = "userServiceRetryFallBack")
     public List<ProjectDTO> listAllProjectDetails(String userName) throws ProjectServiceException {
 
+        logger.info("here is the project details with certain user name");
         UserResponseDTO userResponseDto = userClientService.getUserDTOByUserName(userName);
         UserDTO user = userResponseDto.getData();
 

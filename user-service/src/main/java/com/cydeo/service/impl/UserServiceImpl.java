@@ -1,11 +1,14 @@
 package com.cydeo.service.impl;
 
+import com.cydeo.controller.UserController;
 import com.cydeo.dto.UserDTO;
 import com.cydeo.entity.User;
 import com.cydeo.exception.UserServiceException;
 import com.cydeo.repository.UserRepository;
 import com.cydeo.service.UserService;
 import com.cydeo.util.MapperUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +24,8 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private MapperUtil mapperUtil;
 
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
     public UserServiceImpl(UserRepository userRepository, MapperUtil mapperUtil) {
         this.userRepository = userRepository;
         this.mapperUtil = mapperUtil;
@@ -34,6 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO findByUserName(String username) throws AccessDeniedException {
+        logger.info("retrieved user with user name");
         User user = userRepository.findByUserName(username);
         return mapperUtil.convert(user,new UserDTO());
     }
