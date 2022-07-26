@@ -148,10 +148,6 @@ public class ProjectServiceImpl implements ProjectService {
         return new ArrayList<>();
     }
 
-    public List<ProjectDTO> userServiceRetryFallBack(String userName, Exception e) {
-        logger.error("Retried 3 times. User-service is not healthy {}", e.getMessage());
-        return new ArrayList<>();
-    }
 
     @Override
     public List<ProjectDTO> readAllByAssignedManager(User user) {
