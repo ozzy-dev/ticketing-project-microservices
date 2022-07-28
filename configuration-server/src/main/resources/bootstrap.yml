@@ -8,7 +8,7 @@ spring:
           uri: https://github.com/ozzy-dev/ticketing-project-microservices-config.git
           default-label: master
           username: ozzy-dev
-          password: '{cipher}b3fa0d382433525184b6eb157d64219f4da6ce5e2355d99195672d789e5be11e13070e63650ed87c78e05e37d8ded566a5a8e8eab4cf4e7a200d0b75822731ab'
+          password: '{cipher}3c8ac4ccd568081b3b8ccaae369ecb9954ef618eeee28fa305b3b6294036238004b528054f9f0a8c4d2a8a29ae6417093895a55a1e545895030addad0e1d32aa'
       fail-fast: true
 encrypt:
-  key: 123sad
+  key: cydeo
