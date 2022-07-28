@@ -56,12 +56,13 @@
 
 spring:
   application:
-    name: userservice
+    name: user-service
   profiles:
-    active: dev
+    active: user_service
   cloud:
     config:
-      uri: http://configserver:8888
+      name: config-client
+      uri: http://localhost:8888
       fail-fast: true
       retry:
         maxAttempts: 200

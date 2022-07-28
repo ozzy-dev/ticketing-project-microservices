@@ -1,13 +1,13 @@
 spring:
   application:
     name: configserver
-  profiles:
-    active: git
   cloud:
     config:
       server:
         git:
           uri: https://github.com/ozzy-dev/ticketing-project-microservices-config.git
-          clone-on-start: true
           default-label: master
+          username: ozzy-dev
+          password: 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
+      fail-fast: true
 
