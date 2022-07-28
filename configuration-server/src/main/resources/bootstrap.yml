@@ -8,6 +8,6 @@ spring:
           uri: https://github.com/ozzy-dev/ticketing-project-microservices-config.git
           default-label: master
           username: ozzy-dev
-          password: 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
+          password: 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
       fail-fast: true
 
