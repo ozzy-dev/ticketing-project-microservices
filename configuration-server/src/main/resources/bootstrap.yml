@@ -1,8 +1,6 @@
 spring:
   application:
     name: configserver
-  profiles:
-    active: git
   cloud:
     config:
       server:
@@ -10,6 +8,7 @@ spring:
           uri: https://github.com/ozzy-dev/ticketing-project-microservices-config.git
           default-label: master
           username: ozzy-dev
-          password: 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
+          password: '{cipher}b3fa0d382433525184b6eb157d64219f4da6ce5e2355d99195672d789e5be11e13070e63650ed87c78e05e37d8ded566a5a8e8eab4cf4e7a200d0b75822731ab'
       fail-fast: true
-
+encrypt:
+  key: 123sad
