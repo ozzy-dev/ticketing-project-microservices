@@ -47,3 +47,17 @@ info:
     spring-cloud-version: '@spring-cloud.version@'
     spring-boot-version: '@project.parent.version@'
 
+keycloak:
+  realm: cydeo-dev
+  auth-server-url: http://host.docker.internal:8080/auth
+  ssl-required: external
+  resource: ticketing-app
+  credentials:
+    secret: oLhPOP1UYT5I8M9AmTf6MhB7QIBj48Vl
+  bearer-only: true
+
+master:
+  user: admin
+  password: admin
+  realm: master
+  client: master-client

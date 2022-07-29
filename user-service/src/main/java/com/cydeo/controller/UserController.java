@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.nio.file.AccessDeniedException;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class UserController {
     }
 
     @GetMapping
+    @RolesAllowed("Admin")
     public ResponseEntity<ResponseWrapper> getUsers() {
         List<UserDTO> userDTOList = userService.listAllUsers();
         return ResponseEntity.ok(new ResponseWrapper("Users are successfully retrieved", userDTOList, HttpStatus.OK));

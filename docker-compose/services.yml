@@ -127,6 +127,27 @@ services:
       backend:
         aliases:
           - "configserver"
+  keycloak:
+    image: quay.io/keycloak/keycloak:18.0.2-legacy
+    depends_on:
+      - database
+    environment:
+      JAVA_OPTS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5007 -Xms128m -Xmx256m
+      DB_VENDOR: postgres
+      DB_ADDR: host.docker.internal:5435
+      DB_DATABASE: "ticketing-app"
+      DB_USER: "postgres"
+      DB_PASSWORD: "admin"
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+
+    ports:
+      - "8180:8080"
+    restart: unless-stopped
+    networks:
+      - backend
 
 networks:
   backend:

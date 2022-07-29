@@ -1,4 +1,6 @@
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: project-service
   profiles:
@@ -85,5 +87,4 @@ resilience4j:
         timeOutDuration: 5000
         limitRefreshPeriod: 5000
         limitForPeriod: 1
-
 

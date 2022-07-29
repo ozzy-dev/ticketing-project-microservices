@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -53,6 +54,7 @@ public class ProjectController {
     }
 
     @GetMapping("/details/{userName}")
+    @RolesAllowed("Admin")
     public ResponseEntity<ResponseWrapper> readAllProjectDetails(@PathVariable("userName") String userName) throws ProjectServiceException {
 
             List<ProjectDTO> projectDTOs = projectService.listAllProjectDetails(userName);
