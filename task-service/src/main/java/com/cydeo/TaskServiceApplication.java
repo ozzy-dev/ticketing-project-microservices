@@ -8,9 +8,12 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 
+
 @SpringBootApplication
 @EnableFeignClients
 @EnableDiscoveryClient
+//@EnableWebSecurity
+//@EnableGlobalMethodSecurity(jsr250Enabled = true)
 public class TaskServiceApplication {
 
     public static void main(String[] args) {
