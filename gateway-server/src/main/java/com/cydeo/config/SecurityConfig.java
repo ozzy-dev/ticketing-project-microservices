@@ -21,6 +21,8 @@ public class SecurityConfig {
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.authorizeExchange(exchanges -> exchanges.pathMatchers("/cydeo/user/**").hasRole("Admin")
                         .pathMatchers("/cydeo/project/**").authenticated()
+                        .pathMatchers("/openapi/**").permitAll()
+                        .pathMatchers("/webjars/**").permitAll()
                         .pathMatchers("/cydeo/task/**").permitAll())
                 .oauth2ResourceServer().jwt().jwtAuthenticationConverter(grantedAuthoritiesExtractor());
         http.csrf().disable();

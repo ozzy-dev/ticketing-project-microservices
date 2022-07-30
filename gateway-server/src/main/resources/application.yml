@@ -9,7 +9,12 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-#      routes:
+      routes:
+        - id: user-service-swagger-ui
+          uri: lb://user-service
+          predicates:
+            - Path=/openapi/**
+  #      routes:
 #        - id: user-service
 #          uri: lb://user-service
 #          predicates:

@@ -67,3 +67,26 @@ spring:
       retry:
         maxAttempts: 200
         maxInterval: 10000
+
+
+
+springdoc:
+  swagger-ui:
+    path: /openapi/swagger-ui.html
+    api-docs:
+      path: /openapi/v3/api-docs
+    packagesToScan: com.cydeo
+    pathsToMatch: /**
+    oauth2-redirect-url: http://localhost:8080
+    oauth:
+      client-id: ticketing-app
+      client-secret: smLoble4B7Yu9G8gpyVtx0iWdRtB2y1H
+      use-basic-authentication-with-access-code-grant: true
+  oAuthFlow:
+    authorizationUrl: http://localhost:8080/auth/realms/master/protocol/openid-connect/auth
+    tokenUrl: http://localhost:8080/auth/realms/master/protocol/openid-connect/token
+
+server:
+  forward-headers-strategy: framework
+
+
