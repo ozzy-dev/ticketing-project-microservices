@@ -1,7 +1,5 @@
 package com.cydeo;
 
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.info.Info;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,9 +11,6 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 @EnableFeignClients
 @EnableDiscoveryClient
-@OpenAPIDefinition(info =
-@Info(title = "Ticketing App", version = "${springdoc.version}", description = "Task Service API v1.0")
-)
 public class TaskServiceApplication {
 
     public static void main(String[] args) {

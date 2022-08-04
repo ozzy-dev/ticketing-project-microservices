@@ -102,5 +102,3 @@ spring:
       retry:
         maxAttempts: 200
         maxInterval: 10000
-springdoc:
-  version: '@springdoc.version@'
