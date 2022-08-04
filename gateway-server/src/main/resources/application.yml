@@ -29,7 +29,7 @@ spring:
           filters:
             - RewritePath=/task/(?<path>.*), /$\{path}
         - id: openapi
-          uri: http://host.docker.internal:${server.port}
+          uri: http://localhost:${server.port}
           predicates:
             - Path=/v3/api-docs/**
           filters:
@@ -76,7 +76,12 @@ eureka:
       defaultZone: http://discovery-service:8761/eureka/
 
 
-springdoc:
-  version: '@springdoc.version@'
-  swagger-ui:
-    use-root-path: true
+#springdoc:
+#  swagger-ui:
+#    urls:
+#      - name: user
+#        url: /v3/api-docs/user
+#      - name: project
+#        url: /v3/api-docs/project
+#      - name: task
+#        url: /v3/api-docs/task
