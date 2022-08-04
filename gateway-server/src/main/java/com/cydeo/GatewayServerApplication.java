@@ -1,5 +1,10 @@
 package com.cydeo;
 
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -36,6 +41,14 @@ public class GatewayServerApplication {
                                 .addResponseHeader("X-Response-Time",new Date().toString()))
                         .uri("lb://task-service"))
                 .build();
+    }
+
+    @Bean
+    public OpenAPI customOpenAPI(@Value("${springdoc.version}") String appVersion) {
+        return new OpenAPI()
+                .components(new Components())
+                .info(new Info().title("Foo API").version(appVersion)
+                        .license(new License().name("Apache 2.0").url("http://springdoc.org")));
     }
 
 }

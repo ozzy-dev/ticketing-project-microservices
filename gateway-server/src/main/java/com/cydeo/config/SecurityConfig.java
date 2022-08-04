@@ -19,6 +19,7 @@ public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.authorizeExchange(exchanges -> exchanges.pathMatchers("/cydeo/user/**").hasRole("Admin")
+                        .pathMatchers("/v3/api-docs/**", "/swagger-ui/**", "/webjars/**", "/swagger-ui.html").permitAll()
                         .pathMatchers("/cydeo/project/**").authenticated()
                         .pathMatchers("/cydeo/task/**").permitAll())
                 .oauth2ResourceServer().jwt().jwtAuthenticationConverter(grantedAuthoritiesExtractor());

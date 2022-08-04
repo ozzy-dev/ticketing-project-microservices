@@ -25,6 +25,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
+          issuer-uri:  http://host.docker.internal:8080/auth/realms/master
           jwk-set-uri: http://host.docker.internal:8080/auth/realms/master/protocol/openid-connect/certs
 logging:
   level:
@@ -61,3 +62,12 @@ eureka:
     serviceUrl:
       defaultZone: http://discovery-service:8761/eureka/
 
+springdoc:
+  version: '@springdoc.version@'
+  swagger-ui:
+    oauth:
+      clientId: ticketing-app
+      clientSecret: newClientSecret
+  oAuthFlow:
+    authorizationUrl: http://host.docker.internal:8080/auth/realms/master/protocol/openid-connect/auth
+    tokenUrl: http://host.docker.internal:8080/auth/realms/master/protocol/openid-connect/token
