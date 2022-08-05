@@ -1,5 +1,13 @@
 version: '2.1'
 services:
+  configserver:
+    image: ${GROUP_ID}/config-server:${SERVICE_VERSION:-latest}
+    ports:
+      - "8888:8888"
+    networks:
+      backend:
+        aliases:
+          - "configserver"
   database:
     restart: "no"
     image: postgres:latest
@@ -27,6 +35,7 @@ services:
       - "CONFIGSERVER_URI=http://configserver:8888"
       - "CONFIGSERVER_PORT=8888"
       - "JAVA_OPTS:-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5007 -Xms128m -Xmx1g"
+    restart: on-failure
     depends_on:
       database:
         condition: service_healthy
@@ -55,6 +64,7 @@ services:
       - "CONFIGSERVER_URI=http://configserver:8888"
       - "CONFIGSERVER_PORT=8888"
       - "JAVA_OPTS:-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5007 -Xms128m -Xmx1g"
+    restart: on-failure
     depends_on:
       database:
         condition: service_healthy
@@ -69,6 +79,7 @@ services:
     environment:
       - "PROFILE=dev"
       - "JAVA_OPTS:-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5007 -Xms128m -Xmx1g"
+    restart: on-failure
     depends_on:
       database:
         condition: service_healthy
@@ -125,14 +136,7 @@ services:
       - prometheus
     networks:
       - backend
-  configserver:
-    image: ${GROUP_ID}/config-server:${SERVICE_VERSION:-latest}
-    ports:
-      - "8888:8888"
-    networks:
-      backend:
-        aliases:
-          - "configserver"
+
 
 networks:
   backend:
